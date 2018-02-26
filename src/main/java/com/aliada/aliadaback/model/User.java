@@ -1,10 +1,9 @@
 package com.aliada.aliadaback.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
@@ -21,6 +20,14 @@ public class User {
     private String phone;
 
     private String deviceId;
+
+    @OneToMany
+    @JsonIgnore
+    private Set<Search> searches;
+
+    @OneToMany
+    @JsonIgnore
+    private Set<Answer> answers;
 
     public Long getId() {
         return id;
@@ -68,5 +75,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Search> getSearches() {
+        return searches;
+    }
+
+    public void setSearches(Set<Search> searches) {
+        this.searches = searches;
+    }
+
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
     }
 }
