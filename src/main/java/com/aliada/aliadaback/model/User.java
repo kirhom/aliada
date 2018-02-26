@@ -1,4 +1,4 @@
-package com.aliada.model;
+package com.aliada.aliadaback.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
@@ -14,7 +14,6 @@ public class User {
 
     private String name;
 
-    @JsonIgnore
     private String password;
 
     private String email;
