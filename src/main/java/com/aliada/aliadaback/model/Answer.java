@@ -1,6 +1,11 @@
 package com.aliada.aliadaback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Answer {
@@ -14,6 +19,7 @@ public class Answer {
     private Long id;
 
     @ManyToOne
+    @JsonProperty(access = WRITE_ONLY)
     private Search search;
 
     @ManyToOne
