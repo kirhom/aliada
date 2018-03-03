@@ -31,26 +31,14 @@ public class AnswerController {
         return new ResponseEntity<>(answer, HttpStatus.OK);
     }
 
-//    @RequestMapping(path="active", method = RequestMethod.GET)
-//    public ResponseEntity<?> getActiveSearches (@PathVariable String userId) {
-//        User user = this.validateUser(userId);
-//        Set<Search> searches = searchRepository.findByStatusAndUser(user, Search.AWAITING_RESPONSE);
-//        if (searches.size() > 0) {
-//            Search search = (Search) searchRepository.findByStatusAndUser(user, Search.AWAITING_RESPONSE).toArray()[0];
-//            return new ResponseEntity<>(search, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(null, HttpStatus.OK);
-//    }
-//
-//    @RequestMapping(path="{searchId}", method = RequestMethod.PUT)
-//    public ResponseEntity<?> updateSearch (@PathVariable String userId, @PathVariable Long searchId, @RequestBody Search search) {
-//        this.validateUser(userId);
-//        Search currentSearch = searchRepository.findOne(searchId);
-//        currentSearch.setStatus(search.getStatus());
-//        currentSearch.setReason(search.getReason());
-//        searchRepository.saveAndFlush(currentSearch);
-//        return new ResponseEntity<>(currentSearch, HttpStatus.OK);
-//    }
+    @RequestMapping(path="{updateId}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateSearch (@PathVariable String userId, @PathVariable Long updateId, @RequestBody Answer answer) {
+        this.validateUser(userId);
+        Answer currentAnswer = answerRepository.findOne(updateId);
+        currentAnswer.setStatus(answer.getStatus());
+        answerRepository.saveAndFlush(currentAnswer);
+        return new ResponseEntity<>(currentAnswer, HttpStatus.OK);
+    }
 
 
     private User validateUser(String userId) {

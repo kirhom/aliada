@@ -1,6 +1,6 @@
 package com.aliada.aliadaback.model;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AnswerRepository extends CrudRepository<Answer, Long> {
+public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
 }
