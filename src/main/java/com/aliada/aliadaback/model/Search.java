@@ -7,10 +7,11 @@ import java.util.Set;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Search {
-    public static int AWAITING_RESPONSE = 0;
-    public static int AWAITING_CONFIRMATION = 1;
-    public static int IN_PROGRESS = 2;
-    public static int DONE = 3;
+    public static final int AWAITING_RESPONSE = 0;
+    public static final int AWAITING_CONFIRMATION = 1;
+    public static final int IN_PROGRESS = 2;
+    public static final int DONE = 3;
+    public static final int CANCELLED = 4;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
